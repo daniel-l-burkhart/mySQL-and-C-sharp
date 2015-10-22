@@ -1,6 +1,6 @@
-﻿namespace CS3230_Homework_4
+﻿namespace CS3230_Homework_4.View
 {
-    partial class CS3230Homework4
+    partial class Cs3230Homework4
     {
         /// <summary>
         /// Required designer variable.
@@ -13,9 +13,9 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -47,23 +47,23 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(347, 35);
+            this.label1.Location = new System.Drawing.Point(356, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 13);
+            this.label1.Size = new System.Drawing.Size(122, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Enter SSN of Employee";
+            this.label1.Text = "Enter SSN of Supervisor";
             // 
             // superSSNTextBox
             // 
             this.superSSNTextBox.AllowDrop = true;
-            this.superSSNTextBox.Location = new System.Drawing.Point(471, 32);
+            this.superSSNTextBox.Location = new System.Drawing.Point(480, 32);
             this.superSSNTextBox.Name = "superSSNTextBox";
             this.superSSNTextBox.Size = new System.Drawing.Size(100, 20);
             this.superSSNTextBox.TabIndex = 2;
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(587, 30);
+            this.submitButton.Location = new System.Drawing.Point(596, 30);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 3;
@@ -90,9 +90,9 @@
             this.Controls.Add(this.superSSNTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.employeeDataGridView);
-            this.Name = "CS3230Homework4";
+            this.Name = "Cs3230Homework4";
             this.Text = "CS 3230 - Homework 4";
-            this.Load += new System.EventHandler(this.CS3230Homework4_Load);
+           
             ((System.ComponentModel.ISupportInitialize)(this.employeeDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

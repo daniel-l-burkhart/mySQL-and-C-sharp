@@ -1,33 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using CS3230ExploringTheRepositoryPattern.DAL.Interfaces;
+using CS3230_Homework_4.DAL.Interfaces;
 using CS3230_Homework_4.Model;
 using MySql.Data.MySqlClient;
 
 namespace CS3230_Homework_4.DAL.Repository
 {
     /// <summary>
-    ///     The Employee Repository
+    /// The Employee Repository
     /// </summary>
     public class EmployeeRepository : IRepository<Employee>
     {
+        #region Instance Variable
         /// <summary>
-        ///     The connection string
+        /// The connection string
         /// </summary>
         private readonly string connectionString;
+        #endregion
 
+        #region Constructor
         /// <summary>
-        ///     Initializes a new instance of the <see cref="EmployeeRepository" /> class.
+        /// Initializes a new instance of the <see cref="EmployeeRepository" /> class.
         /// </summary>
         /// <param name="connection">The connection.</param>
         public EmployeeRepository(string connection = "MySqlDbConnection")
         {
             this.connectionString = connection;
         }
+        #endregion
+
+        #region Methods
 
         /// <summary>
-        ///     Adds the specified entity.
+        /// Adds the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <exception cref="NotImplementedException"></exception>
@@ -37,7 +43,7 @@ namespace CS3230_Homework_4.DAL.Repository
         }
 
         /// <summary>
-        ///     Gets the by identifier.
+        /// Gets the by identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
@@ -48,7 +54,7 @@ namespace CS3230_Homework_4.DAL.Repository
         }
 
         /// <summary>
-        ///     Gets all.
+        /// Gets all the employees.
         /// </summary>
         /// <returns></returns>
         public IList<Employee> GetAll()
@@ -59,18 +65,12 @@ namespace CS3230_Homework_4.DAL.Repository
             {
                 var connStr = ConfigurationManager.ConnectionStrings[this.connectionString].ConnectionString;
 
-
                 using (var conn = new MySqlConnection(connStr))
                 {
                     conn.Open();
 
                     using (var cmd = new MySqlCommand("SELECT * from EMPLOYEE", conn))
                     {
-                        //or 
-                        //cmd = new MySqlCommand();
-                        // cmd.CommandType = CommandType.Text;
-                        // cmd.CommandText = "select fname, bdate from EMPLOYEE";
-                        // cmd.Connection = conn;
 
                         using (var dataReader = cmd.ExecuteReader())
                         {
@@ -103,13 +103,18 @@ namespace CS3230_Homework_4.DAL.Repository
                     conn.Close();
                 }
             }
-            catch
+            catch (MySqlException exception)
             {
-                Console.WriteLine("DB connect failed.");
+                Console.WriteLine(exception.Message);
             }
             return allEmployees;
         }
 
+        /// <summary>
+        /// Gets all employees by supervisor.
+        /// </summary>
+        /// <param name="superSsn">The super SSN.</param>
+        /// <returns></returns>
         public IList<Employee> GetAllEmployeesBySupervisor(string superSsn)
         {
             IList<Employee> allEmployees = new List<Employee>();
@@ -122,10 +127,9 @@ namespace CS3230_Homework_4.DAL.Repository
                 {
                     conn.Open();
 
-                    using (var cmd = new MySqlCommand("SELECT * from EMPLOYEE", conn))
+                    using (var cmd = new MySqlCommand("SELECT * from EMPLOYEE WHERE superssn=@superssn", conn))
                     {
-                        cmd.Parameters.AddWithValue("@superSsn", superSsn);
-
+                        cmd.Parameters.AddWithValue("@superssn", superSsn);
 
                         using (var dataReader = cmd.ExecuteReader())
                         {
@@ -158,11 +162,14 @@ namespace CS3230_Homework_4.DAL.Repository
                     conn.Close();
                 }
             }
-            catch
+            catch (MySqlException exception)
             {
-                Console.WriteLine("DB connect failed.");
+                Console.WriteLine(exception.Message);
             }
             return allEmployees;
         }
+
+        #endregion
+
     }
 }
