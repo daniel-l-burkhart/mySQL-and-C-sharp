@@ -38,9 +38,12 @@
             // 
             // employeeDataGridView
             // 
+            this.employeeDataGridView.AllowUserToAddRows = false;
+            this.employeeDataGridView.AllowUserToDeleteRows = false;
             this.employeeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.employeeDataGridView.Location = new System.Drawing.Point(12, 99);
             this.employeeDataGridView.Name = "employeeDataGridView";
+            this.employeeDataGridView.ReadOnly = true;
             this.employeeDataGridView.Size = new System.Drawing.Size(1047, 250);
             this.employeeDataGridView.TabIndex = 0;
             // 
@@ -80,7 +83,7 @@
             this.dataGridViewlabel.TabIndex = 4;
             this.dataGridViewlabel.Text = "Employees that they supervise";
             // 
-            // CS3230Homework4
+            // Cs3230Homework4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -92,7 +95,6 @@
             this.Controls.Add(this.employeeDataGridView);
             this.Name = "Cs3230Homework4";
             this.Text = "CS 3230 - Homework 4";
-           
             ((System.ComponentModel.ISupportInitialize)(this.employeeDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

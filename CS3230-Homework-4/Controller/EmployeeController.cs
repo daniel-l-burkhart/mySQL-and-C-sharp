@@ -5,22 +5,23 @@ using CS3230_Homework_4.Model;
 namespace CS3230_Homework_4.Controller
 {
     /// <summary>
-    /// The controller class
+    ///     The controller class
     /// </summary>
     public class EmployeeController
     {
-
         #region Instance Variable
+
         /// <summary>
-        /// The repository variable
+        ///     The repository variable
         /// </summary>
         private readonly IRepository<Employee> rep;
+
         #endregion
 
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EmployeeController"/> class.
+        ///     Initializes a new instance of the <see cref="EmployeeController" /> class.
         /// </summary>
         /// <param name="rep">The rep.</param>
         public EmployeeController(IRepository<Employee> rep)
@@ -33,7 +34,7 @@ namespace CS3230_Homework_4.Controller
         #region Methods
 
         /// <summary>
-        /// Gets all.
+        ///     Gets all.
         /// </summary>
         /// <returns></returns>
         public IList<Employee> GetAll()
@@ -42,7 +43,7 @@ namespace CS3230_Homework_4.Controller
         }
 
         /// <summary>
-        /// Gets the by supervisor SSN.
+        ///     Gets the by supervisor SSN.
         /// </summary>
         /// <param name="superssn">The superssn.</param>
         /// <returns></returns>
@@ -52,6 +53,5 @@ namespace CS3230_Homework_4.Controller
         }
 
         #endregion
-
     }
 }
